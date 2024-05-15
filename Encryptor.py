@@ -4,7 +4,7 @@ import getpass4
 import os
 
 friday = os.getcwd()
-code = friday + "\Code"
+code = friday + '\\Code'
 
 def encrypt():
     try:
@@ -62,7 +62,7 @@ def decrypt():
     print("Your files have been decrypted successfully")
 
 query = input("Encrypt/Decrypt: ")
-if query == "encrypt":
+if query.lower() == "encrypt":
     encrypt()
 else:
     decrypt()
