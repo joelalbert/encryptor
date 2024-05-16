@@ -5,6 +5,34 @@ import os
 
 friday = os.getcwd()
 code = friday + '\\Code'
+print("""
+This program shall be used to encrypt or decrypt the contents inside the primary 'Code' folder.
+The important source code files, DLL's and other required modules and dependencies of F.R.I.D.A.Y.
+lives inside the 'Code' folder. Therefore, it is essential to remember the passcode used while
+encrypting the folder.
+      
+Proceed with utmost caution. The encrypted files cannot be recovered without the passcode used when encrypting.
+
+""")
+
+def checkfile():
+    file = code + "/Experimental.py"
+    with open (file, 'r') as text:
+        state = text.readline().strip('\n')
+        if state == "import webbrowser":
+            print("The contents inside the 'Code' folder are currently not encypted. Do you wish to encrypt the contents for increased security.")
+            response = input("Y[es]/N[o]: ")
+            if response == 'Y':
+                encrypt()
+            else:
+                exit()
+        else:
+            print("The contents of the folder are currently encrypted. Do you wish to derypt the folder to access the source code.")
+            response = input("Y[es]/N[o]: ")
+            if response == 'Y':
+                decrypt()
+            else:
+                exit()
 
 def encrypt():
     try:
@@ -31,7 +59,8 @@ def encrypt():
             print(f"The file {file} has not been encrypted. Error:\n{e}")
             pass
             
-    print("Your files have been encrypted successfully")
+    print("Your files have been encrypted successfully.")
+    os.system("pause")
 
 def decrypt():
     try:
@@ -59,10 +88,8 @@ def decrypt():
             
         except Exception as e:
             print(e)
-    print("Your files have been decrypted successfully")
+    print("Your files have been decrypted successfully.")
+    os.system("pause")
 
-query = input("Encrypt/Decrypt: ")
-if query.lower() == "encrypt":
-    encrypt()
-else:
-    decrypt()
+if __name__ == '__main__':
+    checkfile()
